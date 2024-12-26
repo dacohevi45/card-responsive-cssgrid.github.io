@@ -90,26 +90,3 @@ body{
     text-decoration: none;
     color: black;
 }
-
-/* MEDIA QUERIES PARA EL DISEÑO RESPONSIVO */
-
-/* Pantallas grandes: 3 columnas */
-@media (min-width: 1200px) {
-    .carta1, .carta2, .carta3 {
-        flex: 1 1 30%; /* 3 columnas */
-    }
-}
-
-/* Pantallas medianas: 2 columnas */
-@media (max-width: 1199px) and (min-width: 768px) {
-    .carta1, .carta2, .carta3 {
-        flex: 1 1 45%; /* 2 columnas */
-    }
-}
-
-/* Pantallas pequeñas (celulares): 1 columna */
-@media (max-width: 767px) {
-    .carta1, .carta2, .carta3 {
-        flex: 1 1 100%; /* 1 columna */
-    }
-}
