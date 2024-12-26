@@ -8,12 +8,9 @@
     box-sizing: border-box;
 }
 
-
 /*variable de colores*/
 :root{
     --color: #f4a09a;
-    --columns: repeat(3, 1fr);
-    --row:(1fr); 
 }
 
 body{
@@ -30,51 +27,41 @@ body{
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: var(--columns);
-    grid-template-rows: var(--row);
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en varias filas */
+    justify-content: space-between; /* Espacio entre los elementos */
     gap: 40px;
 }
 
 .carta1, .carta2, .carta3{
     box-shadow: 0 0 10px rgb(0,0,0.5);
     border-radius: 10px;
+    flex: 1 1 30%; /* Hace que las cartas ocupen un 30% del ancho del contenedor */
 }
 
-.carta1::before{
-    content: "";
-    display: block;
-    width: 100%;
-    height: 200px;
-    background-image: url('gato1.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 10px 10px 0 0;
-}
-
-.carta2::before{
-    content: "";
-    display: block;
-    width: 100%;
-    height: 200px;
-    background-image: url('gato2.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 10px 10px 0 0;
-}
-
+.carta1::before,
+.carta2::before,
 .carta3::before{
     content: "";
     display: block;
     width: 100%;
     height: 200px;
-    background-image: url('gato3.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 10px 10px 0 0;
+}
+
+.carta1::before{
+    background-image: url('gato1.jpg');
+}
+
+.carta2::before{
+    background-image: url('gato2.jpg');
+}
+
+.carta3::before{
+    background-image: url('gato3.jpg');
 }
 
 .carta_texto{
@@ -104,12 +91,25 @@ body{
     color: black;
 }
 
-@media screen and (max-width: 768px) {
-    .contenedor{
-        grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-    }
+/* MEDIA QUERIES PARA EL DISEÑO RESPONSIVO */
 
-    .link{
-        width: 100%;
+/* Pantallas grandes: 3 columnas */
+@media (min-width: 1200px) {
+    .carta1, .carta2, .carta3 {
+        flex: 1 1 30%; /* 3 columnas */
+    }
+}
+
+/* Pantallas medianas: 2 columnas */
+@media (max-width: 1199px) and (min-width: 768px) {
+    .carta1, .carta2, .carta3 {
+        flex: 1 1 45%; /* 2 columnas */
+    }
+}
+
+/* Pantallas pequeñas (celulares): 1 columna */
+@media (max-width: 767px) {
+    .carta1, .carta2, .carta3 {
+        flex: 1 1 100%; /* 1 columna */
     }
 }
